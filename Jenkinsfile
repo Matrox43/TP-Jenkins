@@ -2,10 +2,27 @@ pipeline {
   agent any
   stages {
     stage('Test') {
-      steps {
-        echo 'Test'
-        sleep 30
-        echo 'Fin de test'
+      parallel {
+        stage('Test') {
+          steps {
+            echo 'Test'
+            sleep 30
+            echo 'Fin de test'
+          }
+        }
+
+        stage('Clone Repository') {
+          steps {
+            sh 'git clone https://github.com/Matrox43/TP-Jenkins'
+          }
+        }
+
+        stage('Catch error Repository') {
+          steps {
+            warnError(message: 'Repository non trouvé')
+          }
+        }
+
       }
     }
 
