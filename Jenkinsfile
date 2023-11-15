@@ -1,25 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage('Checkout') {
+    stage('Build Docker Image') {
       steps {
         script {
-          def CLONE = sh(script: 'git clone https://github.com/Matrox43/TP-Jenkins', returnStatus: true)
-          if(CLONE!= 0){ error('Failed to clone repository')
+          sh 'docker buildx build --progress=plain --load -t Dockerfile .'
         }
+
       }
-
     }
+
   }
-
-  stage('Build Docker Image') {
-    steps {
-      script {
-        sh 'docker buildx build --progress=plain --load -t Dockerfile .'
-      }
-
-    }
-  }
-
-}
 }
