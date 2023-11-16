@@ -37,6 +37,13 @@ pipeline {
       }
     }
 
+    stage('Suppresion Image') {
+      steps {
+        sleep 300
+        sh 'docker rm \'test-image-jenkins\''
+      }
+    }
+
   }
   post {
     always {
