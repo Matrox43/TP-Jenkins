@@ -22,5 +22,33 @@ pipeline {
       }
     }
 
+    stage('Déploiement') {
+      when {
+        expression {
+          currentBuild.resultIsBetterOrEqualTo('SUCCESS')
+        }
+
+      }
+      steps {
+        script {
+          def container = docker.image('test-image-jenkins').run("--name test-auto-jenkins -p 8000:80 -d")
+        }
+
+      }
+    }
+
   }
-}
+  post {
+    always {
+      script {
+        discordSend(
+          description: "Le build a ${currentBuild.result}",
+          result: currentBuild.result,
+          title: env.JOB_NAME,
+          webhookURL: "https://discord.com/api/webhooks/1174692530676305990/ZckPjJq6UAgflOp5FG_GdYldWEfwkSG9jp7ty1bXykKAD7-ZnJG-DFO88-B4ZG0L9ed-" )
+        }
+
+      }
+
+    }
+  }
