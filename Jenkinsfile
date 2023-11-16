@@ -37,6 +37,15 @@ pipeline {
       }
     }
 
+    stage('Suppresion Image') {
+      steps {
+        sleep 90
+        sh '''docker ps -a
+'''
+        sh 'docker rm --force test-auto-jenkins'
+      }
+    }
+
   }
   post {
     always {
