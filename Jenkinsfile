@@ -4,7 +4,7 @@ pipeline {
     stage('Build Docker Image') {
       steps {
         script {
-          docker.build ('https://github.com/Matrox43/TP-Jenkins/blob/main/Dockerfile')
+          docker build -t ('https://github.com/Matrox43/TP-Jenkins/blob/main/Dockerfile')
         }
 
       }
