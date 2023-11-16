@@ -4,7 +4,7 @@ pipeline {
     stage('Build Docker Image') {
       steps {
         script {
-          sh 'docker buildx build --progress=plain --load -t "Dockerfile"'
+          docker.build ('https://github.com/Matrox43/TP-Jenkins/blob/main/Dockerfile')
         }
 
       }
