@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('clÃ´ner le dÃ©pÃ´t') {
+    stage('Clone Depot') {
       steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/Matrox43/TP-Jenkins.git']]])
       }
@@ -22,7 +22,7 @@ pipeline {
       }
     }
 
-    stage('Déploiement') {
+    stage('Deploiement') {
       when {
         expression {
           currentBuild.resultIsBetterOrEqualTo('SUCCESS')
