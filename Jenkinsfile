@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('clôner le dépôt') {
+    stage('clÃ´ner le dÃ©pÃ´t') {
       steps {
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/Ylaaan/docker-node-example.git']]])
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/Matrox43/TP-Jenkins']]])
       }
     }
 
