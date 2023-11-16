@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('clôner le dépôt') {
+    stage('clÃ´ner le dÃ©pÃ´t') {
       steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/Matrox43/TP-Jenkins.git']]])
       }
@@ -22,7 +22,7 @@ pipeline {
       }
     }
 
-    stage('D�ploiement') {
+    stage('Déploiement') {
       when {
         expression {
           currentBuild.resultIsBetterOrEqualTo('SUCCESS')
@@ -45,7 +45,7 @@ pipeline {
           description: "Le build a ${currentBuild.result}",
           result: currentBuild.result,
           title: env.JOB_NAME,
-          webhookURL: "https://discord.com/api/webhooks/1174692530676305990/ZckPjJq6UAgflOp5FG_GdYldWEfwkSG9jp7ty1bXykKAD7-ZnJG-DFO88-B4ZG0L9ed-" )
+          webhookURL: "https://discord.com/api/webhooks/1174693509517815909/PnME1Zumcp-KkNP4_WZwOSpOlgFZy7Fm5DR6NxyqXMFA-IMwHWR4mX26TFkA2xzETv1g")
         }
 
       }
