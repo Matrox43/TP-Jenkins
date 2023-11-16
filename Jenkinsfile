@@ -41,7 +41,7 @@ pipeline {
       steps {
         sh '''docker ps -a
 '''
-        sleep 90
+        sleep 30
         sh 'docker rm --force test-auto-jenkins'
         sh 'docker ps -a'
       }
